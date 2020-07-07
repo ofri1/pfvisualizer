@@ -80,7 +80,7 @@ class App extends Component {
     }
   }
 
-  colorNodes() {
+  colorNodes(finished = true) {
     for (let i = 0; i < this.state.order.length; i++) {
       let node = this.state.order[i];
       setTimeout(() => {
@@ -93,19 +93,23 @@ class App extends Component {
       }, i * 200);
     }
 
-    let routeOrder = [];
+    if (finished) {
+      let routeOrder = [];
 
-    let node = this.state.nodes[this.state.end.x][this.state.end.y].prev;
-    while (!(node.x === this.state.start.x && node.y === this.state.start.y)) {
-      routeOrder.unshift(node);
-      node = this.state.nodes[node.x][node.y].prev;
-    }
+      let node = this.state.nodes[this.state.end.x][this.state.end.y].prev;
+      while (
+        !(node.x === this.state.start.x && node.y === this.state.start.y)
+      ) {
+        routeOrder.unshift(node);
+        node = this.state.nodes[node.x][node.y].prev;
+      }
 
-    for (let i = 0; i < routeOrder.length; i++) {
-      let node = routeOrder[i];
-      setTimeout(() => {
-        this.changeColor(routeOrder[i].x, routeOrder[i].y, 6);
-      }, (i + this.state.order.length) * 200);
+      for (let i = 0; i < routeOrder.length; i++) {
+        let node = routeOrder[i];
+        setTimeout(() => {
+          this.changeColor(routeOrder[i].x, routeOrder[i].y, 6);
+        }, (i + this.state.order.length) * 200);
+      }
     }
   }
 
@@ -167,6 +171,7 @@ class App extends Component {
         stack.push({ x: curX + 1, y: curY });
       }
     }
+    this.colorNodes(false);
   }
 
   render() {
