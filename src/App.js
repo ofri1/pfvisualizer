@@ -25,8 +25,6 @@ class App extends Component {
       }
       this.state.nodes.push(tcols);
     }
-
-    this.changeType.bind(this);
   }
 
   changeType(x, y, value) {
@@ -134,50 +132,35 @@ class App extends Component {
       this.changeType(curX, curY, 5);
       this.state.order.push(curNode);
 
-      if (curNode.x === this.state.end.x && curNode.y === this.state.end.y) {
+      if (curX === this.state.end.x && curY === this.state.end.y) {
         this.colorNodes();
         return;
       }
 
-      if (
-        curX > 0 &&
-        (this.state.nodes[curX - 1][curY].ntype === 0 ||
-          this.state.nodes[curX - 1][curY].ntype === 2)
-      ) {
-        this.changeType(curX - 1, curY, 4);
-        this.changePrev(curX - 1, curY, curX, curY);
-        stack.push({ x: curX - 1, y: curY });
-      }
+      let delta = [
+        [-1, 0],
+        [0, -1],
+        [1, 0],
+        [0, 1],
+      ];
 
-      if (
-        curY > 0 &&
-        (this.state.nodes[curX][curY - 1].ntype === 0 ||
-          this.state.nodes[curX][curY - 1].ntype === 2)
-      ) {
-        this.changeType(curX, curY - 1, 4);
-        this.changePrev(curX, curY - 1, curX, curY);
-        stack.push({ x: curX, y: curY - 1 });
-      }
+      delta.map((d) => {
+        const newX = curX + d[0];
+        const newY = curY + d[1];
 
-      if (
-        curY < size - 1 &&
-        (this.state.nodes[curX][curY + 1].ntype === 0 ||
-          this.state.nodes[curX][curY + 1].ntype === 2)
-      ) {
-        this.changeType(curX, curY + 1, 4);
-        this.changePrev(curX, curY + 1, curX, curY);
-        stack.push({ x: curX, y: curY + 1 });
-      }
-
-      if (
-        curX < size - 1 &&
-        (this.state.nodes[curX + 1][curY].ntype === 0 ||
-          this.state.nodes[curX + 1][curY].ntype === 2)
-      ) {
-        this.changeType(curX + 1, curY, 4);
-        this.changePrev(curX + 1, curY, curX, curY);
-        stack.push({ x: curX + 1, y: curY });
-      }
+        if (
+          newX >= 0 &&
+          newX < size &&
+          newY >= 0 &&
+          newY < size &&
+          (this.state.nodes[newX][newY].ntype === 0 ||
+            this.state.nodes[newX][newY].ntype === 2)
+        ) {
+          this.changeType(newX, newY, 4);
+          this.changePrev(newX, newY, curX, curY);
+          stack.push({ x: newX, y: newY });
+        }
+      });
     }
     this.colorNodes(false);
   }
