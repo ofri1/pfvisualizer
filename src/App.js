@@ -95,6 +95,7 @@ class App extends Component {
     if (!finished) {
       setTimeout(() => {
         this.setState({ result: { str: "Failure!", color: "Failure-h1" } });
+        this.setState({ stage: 4 });
       }, this.state.order.length * 200);
     } else {
       let routeOrder = [];
@@ -115,6 +116,7 @@ class App extends Component {
 
       setTimeout(() => {
         this.setState({ result: { str: "Success!", color: "Success-h1" } });
+        this.setState({ stage: 4 });
       }, (this.state.order.length + routeOrder.length) * 200);
     }
   }
@@ -165,6 +167,28 @@ class App extends Component {
     this.colorNodes(false);
   }
 
+  handleReset() {
+    this.setState({
+      stage: 0,
+      start: { x: -1, y: -1 },
+      end: { x: -1, y: -1 },
+      order: [],
+      result: { str: "", color: "" },
+    });
+
+    let newNodes = [];
+
+    for (let i = 0; i < size; i++) {
+      const tcols = [];
+      for (let j = 0; j < size; j++) {
+        tcols.push({ x: i, y: j, ntype: 0, color: 0 });
+      }
+      newNodes.push(tcols);
+    }
+
+    this.setState({ nodes: newNodes });
+  }
+
   render() {
     let button;
     if (this.state.stage === 2) {
@@ -174,6 +198,15 @@ class App extends Component {
           onClick={this.handleStart.bind(this)}
         >
           Start
+        </button>
+      );
+    } else if (this.state.stage === 4) {
+      button = (
+        <button
+          className="btn btn-success m-2"
+          onClick={this.handleReset.bind(this)}
+        >
+          Reset
         </button>
       );
     }
