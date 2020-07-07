@@ -15,6 +15,7 @@ class App extends Component {
       start: { x: -1, y: -1 },
       end: { x: -1, y: -1 },
       order: [],
+      result: { str: "", color: "" },
     };
 
     for (let i = 0; i < size; i++) {
@@ -93,7 +94,11 @@ class App extends Component {
       }, i * 200);
     }
 
-    if (finished) {
+    if (!finished) {
+      setTimeout(() => {
+        this.setState({ result: { str: "Failure!", color: "Failure-h1" } });
+      }, this.state.order.length * 200);
+    } else {
       let routeOrder = [];
 
       let node = this.state.nodes[this.state.end.x][this.state.end.y].prev;
@@ -110,6 +115,10 @@ class App extends Component {
           this.changeColor(routeOrder[i].x, routeOrder[i].y, 6);
         }, (i + this.state.order.length) * 200);
       }
+
+      setTimeout(() => {
+        this.setState({ result: { str: "Success!", color: "Success-h1" } });
+      }, (this.state.order.length + routeOrder.length) * 200);
     }
   }
 
@@ -186,6 +195,7 @@ class App extends Component {
         </button>
       );
     }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -194,6 +204,7 @@ class App extends Component {
             <p>{strList[this.state.stage]}</p>
             {button}
           </div>
+          <h3 className={this.state.result.color}>{this.state.result.str}</h3>
           <div className="container">
             {this.state.nodes.map((col, colIDX) => (
               <div className="row" key={colIDX}>

@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.Success-h1 {
+  color: green;
+}
+
+.Failure-h1 {
+  color: red;
+}
