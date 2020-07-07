@@ -11,10 +11,6 @@ const classList = [
 ];
 
 export default class Node extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleClick() {
     this.props.onChange(this.props.posx, this.props.posy);
   }

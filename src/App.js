@@ -110,7 +110,6 @@ class App extends Component {
       }
 
       for (let i = 0; i < routeOrder.length; i++) {
-        let node = routeOrder[i];
         setTimeout(() => {
           this.changeColor(routeOrder[i].x, routeOrder[i].y, 6);
         }, (i + this.state.order.length) * 200);
