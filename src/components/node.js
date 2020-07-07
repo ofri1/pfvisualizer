@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 
 const classList = [
-  "btn btn-secondary",
-  "btn btn-success",
-  "btn btn btn-danger",
-  "btn btn btn-primary",
-  "btn btn-warning",
+  "btn btn-secondary", // 0
+  "btn btn-success", // 1 - Start
+  "btn btn btn-danger", // 2 - End
+  "btn btn btn-primary", // 3 - Obstacle
+  "btn btn-secondary", // 4 - checked
+  "btn btn-warning", // 5 - visited
+  "btn btn-info", // 6 - part of route
 ];
 
 export default class Node extends Component {
@@ -14,17 +16,6 @@ export default class Node extends Component {
   }
 
   handleClick() {
-    /*
-    if (this.props.stage === 0) {
-      this.props.onChange(1);
-      this.props.onntypeChange(this.props.posx, this.props.posy, 1);
-    } else if (this.props.stage === 1) {
-      this.props.onChange(2);
-      this.props.onntypeChange(this.props.posx, this.props.posy, 2);
-    } else {
-      this.props.onntypeChange(this.props.posx, this.props.posy, 3);
-    }
-    */
     this.props.onChange(this.props.posx, this.props.posy);
   }
 
@@ -32,10 +23,10 @@ export default class Node extends Component {
     return (
       <div>
         <button
-          className={classList[this.props.ntype]}
+          className={classList[this.props.color]}
           onClick={this.handleClick.bind(this)}
         >
-          {this.props.ntype}
+          {/*this.props.ntype*/}
         </button>
       </div>
     );
