@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/pfvisualizer/static/css/main.5f361e03.chunk.css",
+    "main.js": "/pfvisualizer/static/js/main.ffba0ca4.chunk.js",
+    "main.js.map": "/pfvisualizer/static/js/main.ffba0ca4.chunk.js.map",
+    "runtime-main.js": "/pfvisualizer/static/js/runtime-main.aa74ae06.js",
+    "runtime-main.js.map": "/pfvisualizer/static/js/runtime-main.aa74ae06.js.map",
+    "static/css/2.829c9cb5.chunk.css": "/pfvisualizer/static/css/2.829c9cb5.chunk.css",
+    "static/js/2.77e047a6.chunk.js": "/pfvisualizer/static/js/2.77e047a6.chunk.js",
+    "static/js/2.77e047a6.chunk.js.map": "/pfvisualizer/static/js/2.77e047a6.chunk.js.map",
+    "index.html": "/pfvisualizer/index.html",
+    "precache-manifest.8239fc99e9fe23fce7dd7dc7cf03001f.js": "/pfvisualizer/precache-manifest.8239fc99e9fe23fce7dd7dc7cf03001f.js",
+    "service-worker.js": "/pfvisualizer/service-worker.js",
+    "static/css/2.829c9cb5.chunk.css.map": "/pfvisualizer/static/css/2.829c9cb5.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/pfvisualizer/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.77e047a6.chunk.js.LICENSE.txt": "/pfvisualizer/static/js/2.77e047a6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa74ae06.js",
+    "static/css/2.829c9cb5.chunk.css",
+    "static/js/2.77e047a6.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.ffba0ca4.chunk.js"
+  ]
+}
